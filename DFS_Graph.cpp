@@ -1,4 +1,4 @@
-  
+
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -9,7 +9,7 @@ using namespace std;
 
 #define BLACK 2
 
-int G[100][100]/*={0}*/,color[100],d[100],prev[100],f[100];
+int G[100][100],color[100],d[100],previous[100],f[100];
 
 int front = 0, rear =0;
 
@@ -27,11 +27,11 @@ cout<<s<<"->";
 
 }
 
-else if(prev[v]==-1)
+else if(previous[v]==-1)
 
 {
 
-cout<<"No Path";
+cout<<"No Path->";
 
 }
 
@@ -41,7 +41,7 @@ else
 
 {
 
-print_path(s,prev[v]);
+print_path(s,previous[v]);
 
 cout<<v<<"->";
 
@@ -71,7 +71,7 @@ if(color[v]==WHITE)
 
 {
 
-prev[v]=u;
+previous[v]=u;
 
 DFS_visit(v,n);
 
@@ -80,6 +80,9 @@ DFS_visit(v,n);
 }
 
 }
+time1++;
+f[u]=time1;
+color[u]=BLACK;
 
 }
 
@@ -93,7 +96,7 @@ for(int i=0; i<n; i++)
 
 color[i]=WHITE;
 
-prev[i]=-1;
+previous[i]=-1;
 
 }
 
@@ -135,7 +138,7 @@ for(i=0; i<e; i++)
 
 {
 
-cout<<"Enter edges :";
+//cout<<"Enter edges :";
 
 cin>>u>>v;
 
@@ -167,6 +170,17 @@ cout<<endl;
 
 DFS(n);
 
+
+cout<<"Symbol of Nodes : \t";
+
+for(i=0; i<n; i++)
+
+{
+cout<<i<<" ";
+
+}
+    cout<<endl;
+    cout<<"Colors of Nodes: \t";
 for(i=0; i<n; i++)
 
 {
@@ -176,8 +190,8 @@ cout<<color[i]<<" ";
 }
 
 
-
 cout<<endl;
+cout<<"Discovery Time : \t";
 
 for(i=0; i<n; i++)
 
@@ -186,6 +200,8 @@ for(i=0; i<n; i++)
 cout<<d[i]<<" ";
 
 }
+cout<<endl;
+cout<<"Finishing Time : \t";
 
 for(i=0; i<n; i++)
 
@@ -194,16 +210,14 @@ for(i=0; i<n; i++)
 cout<<f[i]<<" ";
 
 }
-
-
-
 cout<<endl;
+cout<<"Previous Node : \t";
 
 for(i=0; i<n; i++)
 
 {
 
-cout<<prev[i]<<" ";
+cout<<previous[i]<<" ";
 
 }
 
@@ -211,12 +225,20 @@ cout<<prev[i]<<" ";
 
 cout<<endl;
 
-print_path(2,7);
+print_path(0,7);
 
 
 
 return 0;
 
 
-
 }
+/*
+0 1
+1 4
+1 2
+0 3
+3 6
+2 6
+2 7
+7 5*/
