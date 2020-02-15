@@ -66,7 +66,7 @@ s=0;
 //    }
 //}
 for(i=0;i<e;i++){
-    cout<<"Enter edges :";
+  //  cout<<"Enter edges :";
     cin>>u>>v;
     G[u][v]=1;
     G[v][u]=1;
@@ -80,6 +80,14 @@ for(i=0;i<n;i++){
 }
 
 BFS(s,n);
+             cout<<endl;
+             cout<<endl;
+
+for(i=0;i<n;i++){
+        cout<<i<<" ";
+}
+             cout<<endl;
+
 for(i=0;i<n;i++){
         cout<<color[i]<<" ";
 }
@@ -95,8 +103,17 @@ for(i=0;i<n;i++){
 }
 
     cout<<endl;
-print_path(2,7);
+print_path(0,5);
 
 return 0;
 
 }
+/*
+0 1
+1 4
+1 2
+0 3
+3 6
+2 6
+2 7
+7 5*/
