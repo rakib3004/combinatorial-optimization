@@ -1,58 +1,51 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-struct Item{
-
-int value,weight;
-
-Item(int value, int weight) : value(value) ,weight(weight)
+int main()
 {
 
-}
-};
+    int number ;
+    cout<<"How Many Product You Have :";
+    cin>>number;
 
-bool cmp(struct Item a , struct Item b){
-double r1 = (double)a.value/a.weight;
-double r2 = (double)b.value/b.weight;
-return r1>r2;
+    int n=number;
 
-}
+    int weight[n];
+    int value[n];
+    double ratio[n];
+    int i,j;
 
+    double total_weight;
+    cout<<"Total Weight You Have : ";
+    cin>>total_weight;
 
-double fractionalKnapsack(int W,struct Item array[],int n){
+    cout<<"Enter Every Product Value & Weight : ";
+    cout<<"Product No: V_W_"
+        for(i=0; i<n; i++)
+    {
 
-sort(array,array+n,cmp);
-int curWeight = 0;
-double finalvalue = 0.0;
-
-for(int i=0;i<n;i++){
-
-    if(curWeight + array[i].weight<=W){
-
-        curWeight  =curWeight + array[i].weight;
-        finalvalue =finalvalue + array[i].value;
+        cout<<"Product_"<<i+1<<" : ";
+        cin>>value[i]>>weight[i];
+        ratio[i] = (double)(value[i]/weight[i]);
     }
-    else{
 
-        int remain = W- curWeight;
-            finalvalue += array[i].value * ((double) remain / array[i].weight);
-        break;
+
+for(i=0;i,n;i++){
+    for(j=i+1;j<n;j++){
+        if(ratio[i]<ratio[j]){
+            swap(ratio[i],ratio[j]);
+            swap(value[i],value[j]);
+            swap(weight[i],weight[j]);
+        }
     }
 }
-    return finalvalue;
+double current_weight=0.0;
+double final_value=0.0;
+for(i=0;i<n;i++){
+    if((current_weight+weight[i]<=total_weight)){
+        current
+    }
 }
-int main(){
-
-int W =50;
-
-Item array[] = {{60,10},{100,20},{120,30}};
-
-int n = sizeof(array)/sizeof(array[0]);
-
-cout<<"Maximum value we can obtain "<<fractionalKnapsack(W,array,n);
-
-return 0;
-
-
-return 0;
+    return 0;
 }
+
