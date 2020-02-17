@@ -1,8 +1,12 @@
+
 #include<bits/stdc++.h>
 using namespace std;
 
 int main()
 {
+ double total_weight;
+    cout<<"Total Weight You Have : ";
+    cin>>total_weight;
 
     int number ;
     cout<<"How Many Product You Have :";
@@ -15,12 +19,10 @@ int main()
     double ratio[n];
     int i,j;
 
-    double total_weight;
-    cout<<"Total Weight You Have : ";
-    cin>>total_weight;
 
-    cout<<"Enter Every Product Value & Weight : ";
-    cout<<"Product No: V_W_"
+
+    cout<<"Enter Every Product Value & Weight : "<<endl;
+    cout<<"Product No: V_W_"<<endl;
         for(i=0; i<n; i++)
     {
 
@@ -30,7 +32,7 @@ int main()
     }
 
 
-for(i=0;i,n;i++){
+for(i=0;i<n;i++){
     for(j=i+1;j<n;j++){
         if(ratio[i]<ratio[j]){
             swap(ratio[i],ratio[j]);
@@ -39,13 +41,25 @@ for(i=0;i,n;i++){
         }
     }
 }
+
+double remain=0.0;
 double current_weight=0.0;
-double final_value=0.0;
+double current_value=0.0;
+
 for(i=0;i<n;i++){
-    if((current_weight+weight[i]<=total_weight)){
-        current
+    if((current_weight+weight[i])<=total_weight){
+        current_weight = current_weight + weight[i];
+        current_value = current_value + value[i];
+    }
+    else{
+        remain = total_weight - current_weight;
+
+        current_value = current_value + (remain * ratio[i]);
+        break;
+
     }
 }
+
+cout<<"Maximum Value We Gain : "<<current_value;
     return 0;
 }
-
