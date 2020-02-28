@@ -1,12 +1,12 @@
 #include<bits/stdc++.h>
 using namespace std;
-int graph[10][10]={0},n,cost[10],prev[10],visited[10];
+int graph[10][10]={0},n,cost[10],previous[10],visited[10];
 //int i,j;
 void initializeSingleSource(int s){
 for(int i=0;i<n;i++){
 
     cost[i]=10000;
-    prev[i]=-1;
+    previous[i]=-1;
     visited[i]=0;
 }
 cost[s]=0;
@@ -28,7 +28,7 @@ void relax(int u,int v){
 if(cost[v]>graph[u][v]&&visited[v]==0){
 
     cost[v]=graph[u][v];
-    prev[v]=u;
+    previous[v]=u;
 }
 }
 
@@ -68,8 +68,8 @@ int i,j;
 for(i=0;i<m;i++){
 
     cin>>u>>v>>w;
-    graph[u-1][v-1] =w;
-    graph[v-1][u-1] = w;
+    graph[u][v] =w;
+    graph[v][u] = w;
 }
 for(i=0;i<n;i++){
     for(j=0;j<n;j++){
@@ -78,13 +78,19 @@ for(i=0;i<n;i++){
     cout<<endl;
 }
 
-prim(0
-     );
+prim(0);
 int MST=0;
 for(i=0;i<n;i++){
     MST = MST + cost[i];
 }
-cout<<endl<<"Total Cost : "+MST;
+cout<<endl<<"Total Cost : "<<MST;
 return 0;
 
 }
+  /*0 1 1
+1 3 1
+3 2 2
+0 2 6
+1 2 2
+2 4 5
+3 4 5*/
