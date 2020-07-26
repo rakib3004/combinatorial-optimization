@@ -70,29 +70,29 @@ CMakeFiles/untitled.dir/NetworkFlow.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/untitled.dir/NetworkFlow.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rakib3004/CLionProjects/combinatorial-optimization/HomeWork/NetworkFlow.cpp -o CMakeFiles/untitled.dir/NetworkFlow.cpp.s
 
-CMakeFiles/untitled.dir/BSSE0928.cpp.o: CMakeFiles/untitled.dir/flags.make
-CMakeFiles/untitled.dir/BSSE0928.cpp.o: ../BSSE0928.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rakib3004/CLionProjects/combinatorial-optimization/HomeWork/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/untitled.dir/BSSE0928.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/untitled.dir/BSSE0928.cpp.o -c /home/rakib3004/CLionProjects/combinatorial-optimization/HomeWork/BSSE0928.cpp
+CMakeFiles/untitled.dir/Function-Bellmanford-Negative-Cycle.cpp.o: CMakeFiles/untitled.dir/flags.make
+CMakeFiles/untitled.dir/Function-Bellmanford-Negative-Cycle.cpp.o: ../Function-Bellmanford-Negative-Cycle.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rakib3004/CLionProjects/combinatorial-optimization/HomeWork/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/untitled.dir/Function-Bellmanford-Negative-Cycle.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/untitled.dir/Function-Bellmanford-Negative-Cycle.cpp.o -c /home/rakib3004/CLionProjects/combinatorial-optimization/HomeWork/Function-Bellmanford-Negative-Cycle.cpp
 
-CMakeFiles/untitled.dir/BSSE0928.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/untitled.dir/BSSE0928.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rakib3004/CLionProjects/combinatorial-optimization/HomeWork/BSSE0928.cpp > CMakeFiles/untitled.dir/BSSE0928.cpp.i
+CMakeFiles/untitled.dir/Function-Bellmanford-Negative-Cycle.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/untitled.dir/Function-Bellmanford-Negative-Cycle.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rakib3004/CLionProjects/combinatorial-optimization/HomeWork/Function-Bellmanford-Negative-Cycle.cpp > CMakeFiles/untitled.dir/Function-Bellmanford-Negative-Cycle.cpp.i
 
-CMakeFiles/untitled.dir/BSSE0928.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/untitled.dir/BSSE0928.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rakib3004/CLionProjects/combinatorial-optimization/HomeWork/BSSE0928.cpp -o CMakeFiles/untitled.dir/BSSE0928.cpp.s
+CMakeFiles/untitled.dir/Function-Bellmanford-Negative-Cycle.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/untitled.dir/Function-Bellmanford-Negative-Cycle.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rakib3004/CLionProjects/combinatorial-optimization/HomeWork/Function-Bellmanford-Negative-Cycle.cpp -o CMakeFiles/untitled.dir/Function-Bellmanford-Negative-Cycle.cpp.s
 
 # Object files for target untitled
 untitled_OBJECTS = \
 "CMakeFiles/untitled.dir/NetworkFlow.cpp.o" \
-"CMakeFiles/untitled.dir/BSSE0928.cpp.o"
+"CMakeFiles/untitled.dir/Function-Bellmanford-Negative-Cycle.cpp.o"
 
 # External object files for target untitled
 untitled_EXTERNAL_OBJECTS =
 
 untitled: CMakeFiles/untitled.dir/NetworkFlow.cpp.o
-untitled: CMakeFiles/untitled.dir/BSSE0928.cpp.o
+untitled: CMakeFiles/untitled.dir/Function-Bellmanford-Negative-Cycle.cpp.o
 untitled: CMakeFiles/untitled.dir/build.make
 untitled: CMakeFiles/untitled.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rakib3004/CLionProjects/combinatorial-optimization/HomeWork/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable untitled"

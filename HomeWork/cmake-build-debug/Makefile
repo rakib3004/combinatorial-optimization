@@ -123,32 +123,32 @@ untitled/fast:
 	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/build
 .PHONY : untitled/fast
 
-BSSE0928.o: BSSE0928.cpp.o
+Function-Bellmanford-Negative-Cycle.o: Function-Bellmanford-Negative-Cycle.cpp.o
 
-.PHONY : BSSE0928.o
+.PHONY : Function-Bellmanford-Negative-Cycle.o
 
 # target to build an object file
-BSSE0928.cpp.o:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/BSSE0928.cpp.o
-.PHONY : BSSE0928.cpp.o
+Function-Bellmanford-Negative-Cycle.cpp.o:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Function-Bellmanford-Negative-Cycle.cpp.o
+.PHONY : Function-Bellmanford-Negative-Cycle.cpp.o
 
-BSSE0928.i: BSSE0928.cpp.i
+Function-Bellmanford-Negative-Cycle.i: Function-Bellmanford-Negative-Cycle.cpp.i
 
-.PHONY : BSSE0928.i
+.PHONY : Function-Bellmanford-Negative-Cycle.i
 
 # target to preprocess a source file
-BSSE0928.cpp.i:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/BSSE0928.cpp.i
-.PHONY : BSSE0928.cpp.i
+Function-Bellmanford-Negative-Cycle.cpp.i:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Function-Bellmanford-Negative-Cycle.cpp.i
+.PHONY : Function-Bellmanford-Negative-Cycle.cpp.i
 
-BSSE0928.s: BSSE0928.cpp.s
+Function-Bellmanford-Negative-Cycle.s: Function-Bellmanford-Negative-Cycle.cpp.s
 
-.PHONY : BSSE0928.s
+.PHONY : Function-Bellmanford-Negative-Cycle.s
 
 # target to generate assembly for a file
-BSSE0928.cpp.s:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/BSSE0928.cpp.s
-.PHONY : BSSE0928.cpp.s
+Function-Bellmanford-Negative-Cycle.cpp.s:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Function-Bellmanford-Negative-Cycle.cpp.s
+.PHONY : Function-Bellmanford-Negative-Cycle.cpp.s
 
 NetworkFlow.o: NetworkFlow.cpp.o
 
@@ -186,9 +186,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... untitled"
-	@echo "... BSSE0928.o"
-	@echo "... BSSE0928.i"
-	@echo "... BSSE0928.s"
+	@echo "... Function-Bellmanford-Negative-Cycle.o"
+	@echo "... Function-Bellmanford-Negative-Cycle.i"
+	@echo "... Function-Bellmanford-Negative-Cycle.s"
 	@echo "... NetworkFlow.o"
 	@echo "... NetworkFlow.i"
 	@echo "... NetworkFlow.s"
