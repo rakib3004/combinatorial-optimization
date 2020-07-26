@@ -1,98 +1,122 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define INF 100000
-int previousNode[100];
-int pathCost[100][100],distance[100];
-
-void print_path(int a, int b)
-{
-    if(a==b){
-        cout<<a<<"-->";
+int path[100];
+int n,e;
+int cost[100][100],d[100];
+int i,j;
+int k;
+void print_path(int x,  int y){
+    if(x==y){
+        cout<<x<<"-->";
         return;
     }
-    else if(a==INF){
+    else if(x==INF){
         return;
     }
     else{
-        print_path(path[a],b);
-        cout<<a<<"-->";
+        print_path(path[x],y);
+        cout<<x<<"-->";
     }
 
 }
-int main()
-{
 
-    int n,e;
-    cout<<"Number of node  : ";
-    cin>>n;
-
-    cout<<"Number of edges : ";
-    cin>>e;
-    int u,v;
-
-
-    int k;
-    int p,q,w;
-    for(u=0; u<n; u++)
+void graphSetUp(){
+    for(i=0; i<n; i++)
     {
-        for(v=0; v<n; v++)
+        for(j=0; j<n; j++)
         {
-            pathCost[u][v]=INF;
+            cost[i][j]=INF;
         }
-        distance[u]=INF;
-        path[u]=INF;
+        d[i]=INF;
+        path[i]=INF;
     }
     path[0]=0;
-    distance[0]=0;
+    d[0]=0;
+}
 
-    cout<<"From-->To-->Cost"<<endl;
-    for(u=0; u<e; u++)
-    {
-        cin>>p>>q>>w;
-        pathCost[p][q] = w;
-
-    }
-//    for(i=1; i<n; i++)
-//    {
-//        d[i]=cost[0][i];
-//    }
+void bellmanford(){
 
     for(k=0; k<n-1; k++)
     {
-        for(u=0; u<n; u++)
+        for(i=0; i<n; i++)
         {
-            for(v=0; v<n; v++)
+            for(j=0; j<n; j++)
             {
-                if(pathCost[u][v]!=INF)
+                if(cost[i][j]!=INF)
                 {
-                    if(distance[v]>pathCost[u][v]+distance[u])
+                    if(d[j]>cost[i][j]+d[i])
                     {
-                        distance[v] = pathCost[u][v]+distance[u];
-                        path[v]=u;
+                        d[j] = cost[i][j]+d[i];
+                        path[j]=i;
                     }
                 }
             }
         }
     }
 
-    bool isNegativePath =false;
-    for(u=0;u<n;u++){
-        for(v=0;v<n;v++){
-            if(distance[v]>distance[u]+pathCost[u][v]){
-                isNegativePath = true;
-                print_path(path[u],u);
-                cout<<u<<endl;
-                cout<<endl;
+}
 
+void input(){
+    cout<<"Number of no  : ";
+    cin>>n;
+
+    cout<<"Number of edges : ";
+    cin>>e;
+
+    int p,q,w;
+
+    cout<<"From-->To-->Cost"<<endl;
+    for(i=0; i<e; i++)
+    {
+        cin>>p>>q>>w;
+        cost[p][q] = w;
+
+    }
+}
+
+void detectNegativeCycle() {
+    bool isNegativePath = false;
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            if (d[j] > d[i] + cost[i][j]) {
+                isNegativePath = true;
+                print_path(path[i], i);
+                cout << i << endl;
+                cout << endl;
             }
+
         }
     }
+    if (isNegativePath == false) {
+        cout << "There is no negative path exits" << endl;
+    }
+}
 
-    if(isNegativePath==false){
-        cout<<"There is no negative path exits"<<endl;
-
+    int main()
+    {
+        graphSetUp();
+        input();
+        detectNegativeCycle();
     }
 
     return 0;
 }
+/*
 
+8 13
+0 1 4
+0 2 4
+0 3 3
+5 1 3
+2 5 -2
+3 2 2
+4 3 1
+2 4 4
+5 4 -3
+6 5 2
+4 6 -2
+6 7 2
+7 4 2
+
+*/
