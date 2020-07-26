@@ -2,34 +2,24 @@
 using namespace std;
 #define INF 100000
 int path[100];
-void print_path(int i, int j){
-
-if(i==j){
-cout<<i<<"-->";
+int i,j;
+int k;
+void print_path(int x,  int y){
+if(x==y){
+cout<<x<<"-->";
 return;
 }
-else if(i==INF){
+else if(x==INF){
 return;
 }
 else{
-print_path(path[i],j);
-cout<<i<<"-->";
+print_path(path[x],y);
+cout<<x<<"-->";
 }
 
 }
-int main()
-{
 
-    int n,e;
-    cout<<"Number of no  : ";
-    cin>>n;
-    int cost[n][n],d[n];
-
-    cout<<"Number of edges : ";
-    cin>>e;
-int i,j;
-    int k;
-    int p,q,w;
+void graphSetUp(){
     for(i=0; i<n; i++)
     {
         for(j=0; j<n; j++)
@@ -41,6 +31,42 @@ int i,j;
     }
     path[0]=0;
     d[0]=0;
+    }
+
+    void bellmanford(){
+
+        for(k=0; k<n-1; k++)
+        {
+            for(i=0; i<n; i++)
+            {
+                for(j=0; j<n; j++)
+                {
+                    if(cost[i][j]!=INF)
+                    {
+                        if(d[j]>cost[i][j]+d[i])
+                        {
+                            d[j] = cost[i][j]+d[i];
+                            path[j]=i;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+int main()
+{
+graphSetUp();
+    int n,e;
+    cout<<"Number of no  : ";
+    cin>>n;
+    int cost[n][n],d[n];
+
+    cout<<"Number of edges : ";
+    cin>>e;
+
+
+    int p,q,w;
 
     cout<<"From-->To-->Cost"<<endl;
     for(i=0; i<e; i++)
@@ -54,23 +80,6 @@ int i,j;
 //        d[i]=cost[0][i];
 //    }
 
-    for(k=0; k<n-1; k++)
-    {
-        for(i=0; i<n; i++)
-        {
-            for(j=0; j<n; j++)
-            {
-                if(cost[i][j]!=INF)
-                {
-                    if(d[j]>cost[i][j]+d[i])
-                    {
-                        d[j] = cost[i][j]+d[i];
-                        path[j]=i;
-                    }
-                }
-            }
-        }
-    }
 
 bool isNegativePath =false;
 for(i=0;i<n;i++){
@@ -80,7 +89,6 @@ isNegativePath = true;
 print_path(path[i],i);
 cout<<i<<endl;
 cout<<endl;
-
 }
 }
 }

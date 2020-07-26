@@ -74,12 +74,12 @@ clean: CMakeFiles/untitled.dir/clean
 CMakeFiles/untitled.dir/all:
 	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/depend
 	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rakib3004/CLionProjects/combinatorial-optimization/HomeWork/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target untitled"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/rakib3004/CLionProjects/combinatorial-optimization/HomeWork/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target untitled"
 .PHONY : CMakeFiles/untitled.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/untitled.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rakib3004/CLionProjects/combinatorial-optimization/HomeWork/cmake-build-debug/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rakib3004/CLionProjects/combinatorial-optimization/HomeWork/cmake-build-debug/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/untitled.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/rakib3004/CLionProjects/combinatorial-optimization/HomeWork/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/untitled.dir/rule

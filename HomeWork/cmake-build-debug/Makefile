@@ -123,6 +123,33 @@ untitled/fast:
 	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/build
 .PHONY : untitled/fast
 
+BSSE0928.o: BSSE0928.cpp.o
+
+.PHONY : BSSE0928.o
+
+# target to build an object file
+BSSE0928.cpp.o:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/BSSE0928.cpp.o
+.PHONY : BSSE0928.cpp.o
+
+BSSE0928.i: BSSE0928.cpp.i
+
+.PHONY : BSSE0928.i
+
+# target to preprocess a source file
+BSSE0928.cpp.i:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/BSSE0928.cpp.i
+.PHONY : BSSE0928.cpp.i
+
+BSSE0928.s: BSSE0928.cpp.s
+
+.PHONY : BSSE0928.s
+
+# target to generate assembly for a file
+BSSE0928.cpp.s:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/BSSE0928.cpp.s
+.PHONY : BSSE0928.cpp.s
+
 NetworkFlow.o: NetworkFlow.cpp.o
 
 .PHONY : NetworkFlow.o
@@ -159,6 +186,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... untitled"
+	@echo "... BSSE0928.o"
+	@echo "... BSSE0928.i"
+	@echo "... BSSE0928.s"
 	@echo "... NetworkFlow.o"
 	@echo "... NetworkFlow.i"
 	@echo "... NetworkFlow.s"
