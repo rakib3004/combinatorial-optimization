@@ -1,4 +1,4 @@
-# Install script for directory: /home/rakib/CLionProjects/combinatorial-optimization/HomeWork
+# Install script for directory: /home/rakib3004/CLionProjects/combinatorial-optimization/HomeWork
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/rakib/CLionProjects/combinatorial-optimization/HomeWork/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/rakib3004/CLionProjects/combinatorial-optimization/HomeWork/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
