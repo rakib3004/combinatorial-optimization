@@ -3,4 +3,4 @@ project(untitled)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(untitled NetworkFlow.cpp BSSE0928.cpp)
+add_executable(untitled NetworkFlow.cpp Function-Bellmanford-Negative-Cycle.cpp)
