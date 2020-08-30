@@ -1,28 +1,38 @@
 
 #include<bits/stdc++.h>
 using namespace std;
+int x[100],y[100];
+int matrix(int i, int j, int k ,int l){
+
+int x1,x2,y1,y2;
+
+x1 = x[i]-x[j];
+x2 = x[k]-x[l];
+y1 = y[i]-y[j];
+y2 = y[k]-y[l];
+return (x1*y2 - x2*y1);
+
+}
 int main(){
 
-int noOfLine;
-cin>>noOfLine;
-int a[noOfLine][2];
+int n;
+cin>>n;
+
 int i;
 
-for(i=0;i<noOfLine;i++){
-    cin>>a[i][0]>>a[i][1];
+for(i=1;i<=n;i++){
+    cin>>x[i]>>y[i];
 }
-int j;
+int d1,d2,d3,d4;
 
-for(i=0;i<noOfLine;i++){
-    for(j=i+1;j<noOfLine;j++){
-        int a1,a2,a3,a4;
-        a1 = (a[i][0]-a[j][1])*(a[j][0]-a[j][1]);
-        a2 = (a[i][1]-a[j][1])*(a[j][0]-a[j][1]);
-        a3 = (a[j][0]-a[i][1])*(a[i][0]-a[i][1]);
-        a4 = (a[j][1]-a[i][1])*(a[i][0]-a[i][1]);
 
-        int p1 = a1*a2;
-        int p2 = a3*a4;
+d1 = matrix(1,4,3,4);
+d2 = matrix(2,4,3,4);
+d3 = matrix(3,2,1,2);
+d4 = matrix(4,2,1,2);
+
+        int p1 = d1*d2;
+        int p2 = d3*d4;
         if(p1<0&&p2<0){
 
         cout<<"Lines are intersect"<<endl;
@@ -36,8 +46,6 @@ for(i=0;i<noOfLine;i++){
         cout<<"Lines are not intersect"<<endl;
         }
 
-    }
-}
 
 return 0;
 }
