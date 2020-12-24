@@ -66,7 +66,21 @@ for(iterator=0;iterator<permutationNumber;iterator++){
 }
 return permutedString;
 }
+string x_orFunctionality(string aString, string bString){
 
+int iterator=0;
+string outputString="";
+for(iterator=0;iterator<aString.size();iterator++){
+
+    if(aString[iterator]==bString[iterator]){
+        outputString= outputString+"0";
+    }
+    else{
+        outputString= outputString+"1";
+    }
+}
+return outputString;
+}
 int main(){
 
 string plainText ="123456ABCD132536";
