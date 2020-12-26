@@ -53,11 +53,16 @@ string binaryToHexaDecimal(string binaryText)
     bitsMapping["1110"]="E";
     bitsMapping["1111"]="F";
     int i=0;
-    string hexaChar="";
-    for(i=0; i<binaryText.size(); i=i+4)
+    for(i=0; i<binaryText.length(); i=i+4)
     {
-        hexaChar = binaryText[i]+binaryText[i+1]+binaryText[i+2]+binaryText[i+3];
-        hexaDecimalText = hexaDecimalText+bitsMapping[hexaChar];
+         string hexaChar="";
+
+        hexaChar+= binaryText[i];
+        hexaChar+= binaryText[i+1];
+        hexaChar+= binaryText[i+2];
+        hexaChar+= binaryText[i+3];
+        hexaDecimalText += bitsMapping[hexaChar];
+      //  cout<<hexaDecimalText<<endl;
     }
     return hexaDecimalText;
 }
@@ -68,7 +73,7 @@ string permutationFunction(string inputText, int * permutaedTable, int permutati
     string permutedString="";
     for(iterator=0; iterator<permutationNumber; iterator++)
     {
-        permutedString = inputText[permutaedTable[iterator]-1];
+        permutedString = permutedString+inputText[permutaedTable[iterator]-1];
     }
     return permutedString;
 }
@@ -112,6 +117,7 @@ string shiftBitsInLeft(string inputKey, int shiftNumber)
 }
 
 string encryptionInDataEncryptionStandard(string plainText, vector<string> roundKeyBinary, vector<string>roundKeyHexaDecimal){
+           cout<<"Before initial permutation : "<<plainText<<endl;
 
 plainText = hexaDecimalToBinary(plainText);
 
@@ -239,8 +245,12 @@ int main()
 {
 
     string plainText ="123456ABCD132536";
-
+//     plainText ="0146C0963E2B1E2E";
+     plainText ="AAAAAAAAAAAAAAAA";
+cout<<"Plain Text :"<<plainText<<endl;
     string desKey = "AABB09182736CCDD";
+//     desKey = "C83FA926AEDBA7E4";
+     desKey = "AAAAAAAAAAAAAAAA";
 
 //    cout<<hexaDecimalToBinary(plainText)<<endl;
 //    cout<<hexaDecimalToBinary(desKey)<<endl;
