@@ -1,32 +1,34 @@
 
 #include<bits/stdc++.h>
 using namespace std;
-int G[100][100];
+
+int graph[100][100];
+int cost[100];
+int previous[100];
+int visit[100];
 int i,j;
 int main(){
-      int u,v,w;
-      int n,e;
 
-      cout<<"Enter Number of Nodes : ";
-      cin>>n;
-    cout<<"Number of Edges : ";
-    cin>>e;
+graph[1][6]=54;
+graph[1][3]=47;
+graph[1][5]=80;
+graph[2][3]=55;
+graph[2][4]=31;
+graph[2][5]=32;
+graph[2][7]=74;
+graph[2][8]=79;
+graph[3][4]=88;
+graph[3][5]=23;
+graph[3][6]=75;
+graph[3][7]=66;
+graph[4][6]=74;
+graph[4][8]=29;
+graph[5][7]=93;
+graph[7][8]=68;
 
-    for(i=0;i<e;i++){
-               cin>>u>>v>>w;
-               G[u][v]=w;
-               G[v][u]=w;
 
-    }
-    cout<<endl;
-            for(i=0;i<n;i++){
-                for(j=0;j<n;j++){
-                     cout<<G[i][j]<<" ";
-                }
-                cout<<endl;
-            }
 
-         //   for(i=0;i<e;i++);
+
 
 
     return 0;
