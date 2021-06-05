@@ -99,6 +99,8 @@ int MinimumSpanningTree=0;
         }
     }
 
+
+
     cout<<"Total Cost : "<<MinimumSpanningTree<<endl;
 
     return 0;
