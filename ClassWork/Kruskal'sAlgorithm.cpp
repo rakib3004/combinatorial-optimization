@@ -7,6 +7,41 @@ int cost[100];
 int previous[100];
 int visit[100];
 int i,j;
+
+
+
+struct graphValue{
+
+int x;
+int y;
+int cost;
+int point;
+
+}graphComponent[100];
+
+
+void sorting(){
+
+graphComponent temporaryGraph;
+for(i=1;i<=8;i++)
+{
+
+    for(j=1;j<=8;j++){
+
+        if(graph[i][j]){
+
+            graphComponent[k].x=i;
+            graphComponent[k].y=j;
+            graphComponent[k].cost=graph[i][j];
+            graphComponent[k].point=i;
+        }
+    }
+}
+
+
+ -
+ }
+
 int main(){
 
 graph[1][6]=54;
@@ -26,9 +61,26 @@ graph[4][8]=29;
 graph[5][7]=93;
 graph[7][8]=68;
 
+int n=8;
 
 
+int i,j;
+int k=1;
+for(i=1;i<=8;i++)
+{
 
+    for(j=1;j<=8;j++){
+
+        if(graph[i][j]){
+            graphComponent[k].x=i;
+            graphComponent[k].y=j;
+            graphComponent[k].cost=graph[i][j];
+            graphComponent[k].point=i;
+        }
+    }
+}
+
+sorting();
 
 
     return 0;

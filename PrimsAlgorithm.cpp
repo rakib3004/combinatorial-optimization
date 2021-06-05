@@ -25,12 +25,12 @@ cost[source]=0;
 int findOutMinimumCostVertexIndex(){
 
     int min=10000;
-        int nodeIndex=5;
-    for(int i=1;i<8;i++){
+        int nodeIndex;
+    for(int i=1;i<=8;i++){
         if(visit[i]==0&&cost[i]<min){
             min=cost[i];
             nodeIndex=i;
-
+            visit[i]=1;
         }
     }
 
