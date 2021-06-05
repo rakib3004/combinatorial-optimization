@@ -6,9 +6,8 @@ int graph[100][100];
 int cost[100];
 int previous[100];
 int visit[100];
-int i,j;
 
-
+int totalComponent=0;
 
 struct graphValue{
 
@@ -21,19 +20,18 @@ int point;
 
 
 void sorting(){
-
+int i=0,j=0;
 graphComponent temporaryGraph;
-for(i=1;i<=8;i++)
+for(i=1;i<=totalComponent;i++)
 {
 
-    for(j=1;j<=8;j++){
+    for(j=i+1;j<=totalComponent;j++){
 
-        if(graph[i][j]){
-
-            graphComponent[k].x=i;
-            graphComponent[k].y=j;
-            graphComponent[k].cost=graph[i][j];
-            graphComponent[k].point=i;
+        if(graphComponent[j].cost<graphComponent[i].cost){
+            temporaryGraph=graphComponent[j];
+            graphComponent[j]=graphComponent[i];
+            graphComponent[i]=temporaryGraph;
+        }
         }
     }
 }
@@ -76,11 +74,18 @@ for(i=1;i<=8;i++)
             graphComponent[k].y=j;
             graphComponent[k].cost=graph[i][j];
             graphComponent[k].point=i;
+            k++;
         }
     }
 }
 
+
+totalComponent=k-1;
 sorting();
+
+for(i=1;i<=graphComponent;i++){
+
+}
 
 
     return 0;

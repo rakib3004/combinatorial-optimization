@@ -13,7 +13,7 @@ void initialization(int source){
 int i;
 
 for(i=1;i<=8;i++){
-    cost[i]=10000;
+    cost[i]=100000;
     visit[i]=0;
     previous[i]=-1;
 }
@@ -33,6 +33,7 @@ int findOutMinimumCostVertexIndex(){
             visit[i]=1;
         }
     }
+    cout<<nodeIndex<<endl<<endl;
 
     return nodeIndex;
 }
@@ -45,7 +46,7 @@ int i=0,j=0;
 
 initialization(1);
 
-for(int k=0;k<20;k++){
+while(1){
 
 
 i=findOutMinimumCostVertexIndex();
@@ -64,22 +65,22 @@ for(j=1;j<=8;j++){
     }
 }
 
-//int i1;
-//
-//for(i1=1;i1<=8;i1++){
-//    if(visit[i1]==0){
-//        break;
-//        //again run the whole primes algorithm
-//    }
-//
-//}
-//cout<<i1<<" is crossed"<<endl<<endl;
-//
-//
-//if(i1==8){
-//        break;
-//    }
-//
+int i1;
+
+for(i1=1;i1<=8;i1++){
+    if(visit[i1]==0){
+        break;
+        //again run the whole primes algorithm
+    }
+
+}
+cout<<i1<<" is crossed"<<endl<<endl;
+
+
+if(i1==8){
+        break;
+    }
+
 
 
 }
@@ -109,6 +110,16 @@ graph[4][8]=29;
 graph[5][7]=93;
 graph[7][8]=68;
 
+int i,j;
+
+for(i=1;i<=8;i++){
+    for(j=1;j<=8;j++){
+        if(graph[i][j]){
+            graph[j][i]=graph[i][j];
+        }
+    }
+}
+
 
 primsAlgorithm();
 
@@ -116,7 +127,7 @@ primsAlgorithm();
 int MinimumSpanningTree=0;
 
 cout<<"Minimum Spanning Tree: "<<endl;
-for(int i=1;i<=8;i++){
+for( i=1;i<=8;i++){
 MinimumSpanningTree+=cost[i];
 if(i==8){
     cout<<cost[i]<<" = ";
