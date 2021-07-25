@@ -2,7 +2,7 @@
 using namespace std;
 int x[100],y[100];
 
-bool onSegment(int i, int j, int k){
+bool onSegmentCheck(int i, int j, int k){
 int x1 = min(x[i],x[j]);
 int x3 = max(x[i],x[j]);
 int y1 = min(y[i],y[j]);
@@ -28,10 +28,10 @@ return (x1*y2 - x2*y1);
 }
 int main(){
 
-int n;
-cin>>n;
 
 int i;
+int n;
+cin>>n;
 
 for(i=1;i<=n;i++){
     cin>>x[i]>>y[i];
@@ -46,20 +46,20 @@ d4 = matrix(1,2,4);
 
         int p1 = d1*d2;
         int p2 = d3*d4;
-        if(((d1>0 and d2< 0) or (d1<0 and d2>0)) and ((d3>0 and d4<0) or (d3<0 and d4>0))){
+        if(((d1>0 && d2< 0) || (d1<0 && d2>0)) || ((d3>0 && d4<0) || (d3<0 && d4>0))){
 
         cout<<"Lines are intersect"<<endl;
         }
-        else if(d1==0&&onSegment(3,4,1)){
+        else if(d1==0&&onSegmentCheck(3,4,1)){
         cout<<"Lines are intersect"<<endl;
         }
-         else if(d2==0&&onSegment(3,4,2)){
+         else if(d2==0&&onSegmentCheck(3,4,2)){
         cout<<"Lines are intersect"<<endl;
         }
-         else if(d3==0&&onSegment(1,2,3)){
+         else if(d3==0&&onSegmentCheck(1,2,3)){
         cout<<"Lines are intersect"<<endl;
         }
-         else if(d4==0&&onSegment(1,2,4)){
+         else if(d4==0&&onSegmentCheck(1,2,4)){
         cout<<"Lines are intersect"<<endl;
         }
 
@@ -71,3 +71,17 @@ d4 = matrix(1,2,4);
 
 return 0;
 }
+
+/*
+4
+1 1
+9 9
+0 8
+2 6
+------------------
+4
+2 0
+1 1
+2 2
+0 2
+*/

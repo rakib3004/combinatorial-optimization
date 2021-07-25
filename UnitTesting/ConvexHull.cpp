@@ -1,38 +1,38 @@
 #include<bits/stdc++.h>
 using namespace std;
 int x[100],y[100];
-bool act[100];
+bool boolArray[100];
 
 int main(){
 
 int n;
 cin>>n;
-int Y;
+int y2;
 int i;
-int minY=15456456465;
+int minimumValue=1000000;
 for(i=1;i<=n;i++){
     cin>>x[i]>>y[i];
-    act[i]=true;
-    if(y[i]<minY){
-    minY = y[i];
-    Y=i;
-    }else if(y[i]==minY){
-    if(x[i]<x[Y]){
-    minY = y[i];
-    Y=i;
+    boolArray[i]=true;
+    if(y[i]<minimumValue){
+    minimumValue = y[i];
+    y2=i;
+    }else if(y[i]==minimumValue){
+    if(x[i]<x[y2]){
+    minimumValue = y[i];
+    y2=i;
     }
     }
 
 }
-act[Y]=false;
+boolArray[y2]=false;
 int temp=0;
 temp  =x[0];
-x[0]=x[Y];
-x[Y]=temp;
+x[0]=x[y2];
+x[y2]=temp;
 
 temp  =y[0];
-y[0]=y[Y];
-y[Y]=temp;
+y[0]=y[y2];
+y[y2]=temp;
 
 sort(x[1],x[n]);
 sort(y[1],y[n]);
