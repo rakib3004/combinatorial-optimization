@@ -46,7 +46,6 @@ cout<<"Total numbers of sequence element: "<<n<<endl;
             if(array[i]>array[j]){
                 length[i]= maximum(length[i],length[j]+1);
             }
-
         }
      }
 
