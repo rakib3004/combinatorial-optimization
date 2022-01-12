@@ -470,7 +470,7 @@ int main()
 
 	// Function Call to search node
 	// with value 16
-	node.search(16);
+	node.search(200);
 
 	return 0;
 }
