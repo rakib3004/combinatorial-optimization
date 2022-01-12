@@ -45,6 +45,12 @@ Node::Node(){
     pointer = new Node* [DEPTH+1];
 }
 
+BplusTree::BplusTree(){
+
+root = NULL;
+
+}
+
 
 
 int main(){
