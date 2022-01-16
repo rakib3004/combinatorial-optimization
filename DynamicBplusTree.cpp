@@ -1,63 +1,67 @@
 #include<bits/stdc++.h>
 using namespace std;
-int n = 6,mx = 6; //same as n;
+int n,mx; //number of child;
 struct mystruct
 {
     int currentNode;
     mystruct *parent,*next;
-    int *arr; //same as n
+    string *english,*bangla;
     bool lf;
-    mystruct *point; //n+1
+    mystruct **point;
 } ;
 mystruct *root,*firstLeaf;
 
 mystruct* createNode()
 {
     mystruct *m=new mystruct();
+
+
+    m->point = new mystruct *[n+1];
+    m->english=new string[n];
+    m->bangla=new string[n];
+
     m->currentNode = 0;
     m->parent = NULL;
     m->next = NULL;
     m->lf = true;
-    m->arr = new int[n];
-    m->point =  new mystruct[n+1];
     return m;
 }
-mystruct *findLeaf(mystruct *tempRt,int number)
+mystruct *findLeaf(mystruct *tempRt,string english)
 {
 
     while(tempRt->lf==false)
     {
         int i;
-        for(i=0; i<tempRt->currentNode; i++) if(number<tempRt->arr[i]) break;
+        for(i=0; i<tempRt->currentNode; i++) if(english<tempRt->english[i]) break;
         tempRt = tempRt->point[i];
     }
     return tempRt;
 
 }
 
-void insertValueAndPoint(mystruct *parent,int value,mystruct *right)
+void insertValueAndPoint(mystruct *parent,string value,mystruct *right)
 {
     int i=parent->currentNode-1;
     for(;i>=0; i--)
     {
-        if(parent->arr[i]<=value) break;
+        if(parent->english[i]<=value) break;
         else
         {
-            parent->arr[i+1] = parent->arr[i];
+            parent->english[i+1] = parent->english[i];
             parent->point[i+2] = parent->point[i+1];
         }
     }
-    parent->arr[i+1] = value;
+    parent->english[i+1] = value;
     parent->point[i+2] = right;
     parent->currentNode++;
 }
 
-void insertMiddle(mystruct *parent,int value,mystruct *left,mystruct *right)
+void insertMiddle(mystruct *parent,string value,mystruct *left,mystruct *right)
 {
     if(parent==NULL)
     {
         parent = createNode();
-        parent->arr[0] = value;
+        parent->english[0] = value;
         parent->point[0] = left;
         parent->point[1] = right;
         parent->currentNode++;
@@ -76,7 +80,7 @@ void insertMiddle(mystruct *parent,int value,mystruct *left,mystruct *right)
         int j=0;
         for(int i=parent->currentNode-(n-1)/2;i<mx; i++)
         {
-            splitNode->arr[j] = parent->arr[i];
+            splitNode->english[j] = parent->english[i];
             if(j==0)
             {
                 splitNode->point[0] = parent->point[i];
@@ -88,18 +92,29 @@ void insertMiddle(mystruct *parent,int value,mystruct *left,mystruct *right)
         }
         parent->currentNode-=(n-1)/2+1;
         splitNode->currentNode = (n-1)/2;
-        insertMiddle(parent->parent,parent->arr[parent->currentNode],parent,splitNode);
+        insertMiddle(parent->parent,parent->english[parent->currentNode],parent,splitNode);
     }
 
 }
 
-void insertLeaf(int number)
+void insertLeaf(string english,string bangla)
 {
-    mystruct *leaf = findLeaf(root,number);
-
-    leaf->arr[leaf->currentNode] = number;
+    mystruct *leaf = findLeaf(root,english);
+    int i= leaf->currentNode-1;
+    if(i>-1) {
+    for(; i>=0; i--)
+    {
+    	if(english<leaf->english[i])
+    	{
+    		leaf->english[i+1] = leaf->english[i];
+    		leaf->bangla[i+1] = leaf->bangla[i];
+    	}
+    	else break;
+    }
+    }
+    leaf->english[i+1] = english;
+    leaf->bangla[i+1] = bangla;
     leaf->currentNode++;
-    sort(leaf->arr,leaf->arr+leaf->currentNode);
 
     if(leaf->currentNode==mx)
     {
@@ -107,54 +122,44 @@ void insertLeaf(int number)
         int j=0;
         for(int i=leaf->currentNode-n/2;i<mx; i++)
         {
-            splitNode->arr[j] = leaf->arr[i];
+            splitNode->english[j] = leaf->english[i];
+            splitNode->bangla[j] = leaf->bangla[i];
             j++;
         }
         leaf->currentNode-=n/2;
         splitNode->currentNode = n/2;
         splitNode->next = leaf->next;
         leaf->next = splitNode;
-        insertMiddle(leaf->parent,splitNode->arr[0],leaf,splitNode);
+        insertMiddle(leaf->parent,splitNode->english[0],leaf,splitNode);
     }
 }
 
 int main(void)
 {
+	cout << "number of Child:" << endl;
+	cin >> n;
+	mx=n;
     root = createNode();
-    firstLeaf = root;
-    mystruct *fst = firstLeaf;
-    int totalNumber,tempNum;
-//    cout<<"total Number: ";
-//    cin>>totalNumber;
-//    for(int i=0; i<totalNumber; i++)
-//    {
-//        cin>>tempNum;
-//        insertLeaf(tempNum);
-//    }
-    while(true)
+    mystruct *leaf;
+    int i=0;
+    string english,bangla,searchEnglish;
+    ifstream ifile;
+    ifile.open("dictionary.txt");
+    if(!ifile) return 0;
+    while(ifile>>english)
     {
-        cout<<"Number: ";
-        cin>>tempNum;
-        insertLeaf(tempNum);
-        cout<<"root node contains: ";
-    for(int i=0; i<root->currentNode; i++)
-        {
-            cout<<root->arr[i]<<" ";
-        }
-    cout<<"\nleaf node contains:\n";
-    while(firstLeaf!=NULL)
-    {
-        for(int i=0; i<firstLeaf->currentNode; i++)
-        {
-            cout<<firstLeaf->arr[i]<<" ";
-        }
-        cout<<endl;
-        firstLeaf = firstLeaf->next;
+    	getline(ifile,bangla);
+    	insertLeaf(english,bangla);
     }
-    firstLeaf = fst;
+    cout<<"enter text to search: ";
+    while(cin>>searchEnglish)
+    {
+    	 leaf= findLeaf(root,searchEnglish);
+    	 for(i=0; i<leaf->currentNode; i++) if(searchEnglish==leaf->english[i]) break;
+    	 if(i==leaf->currentNode) cout<<"no word founds\n";
+    	 else cout<<searchEnglish<<" "<<leaf->bangla[i]<<endl;
+    	 cout<<"enter text to search: ";
     }
 
 
 }
-//26
-//35 1 8 15 25 3 11 18 5 10 9 6 2 4 16 17 26 27 28 29 30 31 32 33 34 36
