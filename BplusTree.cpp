@@ -75,7 +75,7 @@ void BPTree::search(int x)
 				}
 
 				// If reaches end of the
-				// cursor node
+				// cur sor node
 				if (i == cursor->size - 1) {
 					cursor = cursor->ptr[i + 1];
 					break;
