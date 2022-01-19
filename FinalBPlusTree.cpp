@@ -106,13 +106,19 @@ int i;
 
 while(detector->IS_LEAF==false){
 for(i=0;i<detector->size;i++){
-    cout<<detector->key<<" | "<<detector->value<<endl;
-    detector= detector->ptr[i];
 
-    if(detector->size-1==i){
+
+     if(detector->size-1==i||detector->value==NULL){
             cout<<detector->key<<" | "<<detector->value<<endl;
         detector = detector->ptr[i+1];
     }
+    else{
+    cout<<detector->key<<" | "<<detector->value<<endl;
+    detector= detector->ptr[i];
+
+    }
+   
+   
 }
 
 }
@@ -409,12 +415,21 @@ int main()
     }
 
 
-    cout<<"What do you want to do?"<<endl;
+   
+
+bool pickDecisionAgain= true;
+
+while (pickDecisionAgain)
+{
+  pickDecisionAgain= true;
+
+  int pickUpOptionValueWhichHelpToExecuteTheCode=0;
+
+   cout<<"What do you want to do?"<<endl;
     cout<<"1. Display Dictonary"<<endl;
     cout<<"2. Search Word"<<endl;
     cout<<"Type Option: ";
 
-int pickUpOptionValueWhichHelpToExecuteTheCode=0;
 
 cin>>pickUpOptionValueWhichHelpToExecuteTheCode;
 if(pickUpOptionValueWhichHelpToExecuteTheCode==1){
@@ -435,6 +450,19 @@ else if(pickUpOptionValueWhichHelpToExecuteTheCode==2){
     
 
 }
+
+else{
+    cout<<"------------------"<<endl;
+    cout<<"You type wrong key."<<endl;
+    cout<<"   Try Again!"<<endl;
+    cout<<"------------------"<<endl;
+
+pickDecisionAgain = true;
+
+}
+}
+
+
 
 
 
