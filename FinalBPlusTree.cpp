@@ -76,7 +76,8 @@ void BPTree::search(string x)
 			//cout << x << " " << cursor->key[i] << " " << cursor->value[i] << "\n";
             if (cursor->key[i] == x)
             {
-                cout << cursor->key[i] << " " << cursor->value[i] << "\n";
+                cout << cursor->key[i] << " " << cursor->value[i] <<endl;
+                cout << cursor->ptr[i] << " " << cursor->size<<endl;
                 return;
             }
         }
@@ -108,7 +109,7 @@ while(detector->IS_LEAF==false){
 for(i=0;i<detector->size;i++){
 
 
-     if(detector->size-1==i||detector->value==NULL){
+     if(detector->size-1==i){
             cout<<detector->key<<" | "<<detector->value<<endl;
         detector = detector->ptr[i+1];
     }
