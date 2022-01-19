@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-int MAX = 3;
+int MAX = 219;
 
 class Node {
     bool IS_LEAF;
@@ -146,30 +146,30 @@ void BPTree::insert(string x, string y)
         {
             Node* newLeaf = new Node;
 
-            string virtualNode[MAX + 1];
+            string temporaryNode[MAX + 1];
             string virtualValue[MAX+1];
 
             for (int i=0;i< MAX;i++)
             {
-                virtualNode[i]=cursor->key[i];
+                temporaryNode[i]=cursor->key[i];
                 virtualValue[i]=cursor->value[i];
             }
             int i = 0, j;
 
             // Traverse to find where the new
             // node is to be inserted
-            while (x>virtualNode[i] && i<MAX)
+            while (x>temporaryNode[i] && i<MAX)
             {
                 i++;
             }
 
             for (int j=MAX;j>i;j--)
             {
-                virtualNode[j]=virtualNode[j-1];
+                temporaryNode[j]=temporaryNode[j-1];
                 virtualValue[j]=virtualValue[j-1];
             }
 
-            virtualNode[i]=x;
+            temporaryNode[i]=x;
             virtualValue[i]=y;
             newLeaf->IS_LEAF=true;
 
@@ -184,13 +184,13 @@ void BPTree::insert(string x, string y)
 
             for (i = 0;i<cursor->size;i++)
             {
-                cursor->key[i]=virtualNode[i];
+                cursor->key[i]=temporaryNode[i];
                 cursor->value[i]=virtualValue[i];
             }
 
             for (i=0,j=cursor->size;i<newLeaf->size;i++,j++)
             {
-                newLeaf->key[i]=virtualNode[j];
+                newLeaf->key[i]=temporaryNode[j];
                 newLeaf->value[i]=virtualValue[j];
             }
 
