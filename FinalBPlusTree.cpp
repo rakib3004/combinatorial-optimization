@@ -25,6 +25,7 @@ public:
     void insert(string, string);
     void display(Node*);
     Node* getRoot();
+    void deleteNode(string);
 };
 
 Node::Node()
@@ -82,6 +83,44 @@ void BPTree::search(string x)
         cout << "Not found\n";
     }
 }
+
+
+void BPTree::deleteNode(string searchingKey){
+
+if(root==NULL){
+cout<<"There is nothing to do in this tree"<<endl;
+
+}
+
+    return;
+}
+
+
+void BPTree::display(Node* root){
+
+
+Node* detector =root;
+
+int i;
+
+
+while(detector->IS_LEAF==false){
+for(i=0;i<detector->size;i++){
+    cout<<detector->key<<" | "<<detector->value<<endl;
+    detector= detector->ptr[i];
+
+    if(detector->size-1==i){
+            cout<<detector->key<<" | "<<detector->value<<endl;
+        detector = detector->ptr[i+1];
+    }
+}
+
+}
+
+
+
+}
+
 
 void BPTree::insert(string x, string y)
 {
@@ -147,12 +186,12 @@ void BPTree::insert(string x, string y)
             Node* newLeaf = new Node;
 
             string temporaryNode[MAX + 1];
-            string virtualValue[MAX+1];
+            string temporaryValue[MAX+1];
 
             for (int i=0;i< MAX;i++)
             {
                 temporaryNode[i]=cursor->key[i];
-                virtualValue[i]=cursor->value[i];
+                temporaryValue[i]=cursor->value[i];
             }
             int i = 0, j;
 
@@ -166,11 +205,11 @@ void BPTree::insert(string x, string y)
             for (int j=MAX;j>i;j--)
             {
                 temporaryNode[j]=temporaryNode[j-1];
-                virtualValue[j]=virtualValue[j-1];
+                temporaryValue[j]=temporaryValue[j-1];
             }
 
             temporaryNode[i]=x;
-            virtualValue[i]=y;
+            temporaryValue[i]=y;
             newLeaf->IS_LEAF=true;
 
             cursor->size = (MAX+1)/2;
@@ -185,13 +224,13 @@ void BPTree::insert(string x, string y)
             for (i = 0;i<cursor->size;i++)
             {
                 cursor->key[i]=temporaryNode[i];
-                cursor->value[i]=virtualValue[i];
+                cursor->value[i]=temporaryValue[i];
             }
 
             for (i=0,j=cursor->size;i<newLeaf->size;i++,j++)
             {
                 newLeaf->key[i]=temporaryNode[j];
-                newLeaf->value[i]=virtualValue[j];
+                newLeaf->value[i]=temporaryValue[j];
             }
 
             if (cursor==root)
@@ -246,13 +285,13 @@ void BPTree::insertInternal(string x, string y,Node* cursor,Node* child)
     {
         Node* newInternal = new Node;
         string virtualKey[MAX + 1];
-        string virtualValue[MAX+1];
+        string temporaryValue[MAX+1];
         Node* virtualPtr[MAX + 2];
 
         for (int i=0;i<MAX;i++)
         {
             virtualKey[i]=cursor->key[i];
-            virtualValue[i]=cursor->value[i];
+            temporaryValue[i]=cursor->value[i];
         }
 
         for (int i=0;i<MAX+1; i++)
@@ -270,11 +309,11 @@ void BPTree::insertInternal(string x, string y,Node* cursor,Node* child)
         for (int j=MAX;j>i; j--)
         {
             virtualKey[j]=virtualKey[j-1];
-            virtualValue[j]=virtualValue[j-1];
+            temporaryValue[j]=temporaryValue[j-1];
         }
 
         virtualKey[i]=x;
-        virtualValue[i]=y;
+        temporaryValue[i]=y;
 
         for (int j=MAX+1;j>i+1;j--)
         {
@@ -291,7 +330,7 @@ void BPTree::insertInternal(string x, string y,Node* cursor,Node* child)
         for (i=0,j=cursor->size;i<newInternal->size;i++,j++)
         {
             newInternal->key[i]=virtualKey[j];
-            newInternal->value[i]=virtualValue[j];
+            newInternal->value[i]=temporaryValue[j];
         }
 
         for (i=0,j=cursor->size;i<newInternal->size+1;i++,j++)
@@ -368,18 +407,19 @@ int main()
     	//cout << english << " " << bangla << endl;
     	node.insert(english,bangla);
     }
+
+
+    cout<<"What do you want to do?"<<endl;
+
+
+
 	cout << "Enter string to search : \n";
 	string s;
 	while(cin >> s)
 	{
 		node.search(s);
 	}
-    // Create B+ Tree
-    /*node.insert("Hello", "a");
-    node.insert("Mushfiq", "b");
-    node.insert("Abrakadabra", "c");
-    node.search("Mushfiq");
-    node.search("Hi");*/
+    clear
 
 
     return 0;
