@@ -410,7 +410,20 @@ int main()
 
 
     cout<<"What do you want to do?"<<endl;
+    cout<<"1. Display Dictonary"<<endl;
+    cout<<"2. Search Word"<<endl;
+    cout<<"Type Option: ";
 
+int pickUpOptionValueWhichHelpToExecuteTheCode=0;
+
+cin>>pickUpOptionValueWhichHelpToExecuteTheCode;
+if(pickUpOptionValueWhichHelpToExecuteTheCode==1){
+    Node* displayRootPointer = node.getRoot();
+    cout<<"Dictionary Visualization"<<endl;
+    cout<<"------------------------"<<endl;
+    node.display(displayRootPointer);
+}
+else if(pickUpOptionValueWhichHelpToExecuteTheCode==2){
 
 
 	cout << "Enter string to search : \n";
@@ -419,7 +432,11 @@ int main()
 	{
 		node.search(s);
 	}
-    clear
+    
+
+}
+
+
 
 
     return 0;
