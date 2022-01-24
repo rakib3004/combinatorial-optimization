@@ -77,7 +77,7 @@ void BPTree::search(string x)
             if (cursor->key[i] == x)
             {
                 cout << cursor->key[i] << " " << cursor->value[i] <<endl;
-                cout << cursor->ptr[i] << " " << cursor->size<<endl;
+                //cout << cursor->ptr[i] << " " << cursor->size<<endl;
                 return;
             }
         }
@@ -118,8 +118,8 @@ for(i=0;i<detector->size;i++){
     detector= detector->ptr[i];
 
     }
-   
-   
+
+
 }
 
 }
@@ -416,7 +416,7 @@ int main()
     }
 
 
-   
+
 
 bool pickDecisionAgain= true;
 
@@ -448,7 +448,7 @@ else if(pickUpOptionValueWhichHelpToExecuteTheCode==2){
 	{
 		node.search(s);
 	}
-    
+
 
 }
 
