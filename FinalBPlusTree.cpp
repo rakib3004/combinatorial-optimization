@@ -435,12 +435,32 @@ int main()
 
             cout << "Enter string to search : \n";
             string s;
+            
+
+            
+         
+               
+    
+    		//s=str;
+    
+            
             while (cin >> s)
             {
-                node.search(s);
+               int length = s.length();
+    for (int i = 0; i < length; i++) {
+        int c = s[i];
+
+	 if (isupper(c)){
+	         s[i] = tolower(c);    
+	 }
+
+
+
             }
+                            node.search(s);
         }
 
+}
         else
         {
             cout << "------------------" << endl;
