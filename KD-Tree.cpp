@@ -25,8 +25,7 @@ void insertNonRoot(node *curr,node *newData, int depth)
 void construct()
 {
      struct node *temp=new node;
-//     temp->data=new int[k];
-    // temp = (node*)malloc( (sizeof( struct node) + (sizeof(int)*k)));
+
     cout << "enter"<< "[" << k << "]  " << "points:    ";
      for(int i=0 ;i<k ; i++)
      {
@@ -95,13 +94,13 @@ void search_fun()
     cout << "enter a node  :  ";
     for(int i=0 ; i<k ; i++) cin >> s_point[i];
     bool bl=search_node(root,s_point,0);
-    if(bl==true) cout <<"found and hight :  " << depth+1 << endl;
+    if(bl==true) cout <<"Found and hight :  " << depth+1 << endl;
     else cout <<"Not found " << endl;
 }
 
 int main(void)
 {
-     cout << "enter the value of K : " ;
+     cout << "Enter the value of K : " ;
     cin >> k;
 
    // root =(node*)malloc( (sizeof( int)*(k+2) ));
@@ -110,7 +109,7 @@ int main(void)
    {
         int choice;
 
-        cout<<"1.inset\n2.Search\n3.print(in-order traversal)\n4.exit "<<endl;
+        cout<<"1.Insert\n2.Search\n3.Print(in-order traversal)\n4.exit "<<endl;
         cout<<"enter your choice : "<<endl;
         cin>>choice;
 
