@@ -59,8 +59,8 @@ vector<vector<int> > insertVectorToList
     return pointList;
 }
 
-vector<vector<int> > rangeSearchRecursive
-(Node *parent, int pointOne[], int pointTwo[], int depth)
+vector<vector<int> > rangeSearch
+(Node *parent, int point1[], int point2[], int depth)
 {
     vector<vector<int> > temporary;
     if(parent==NULL) return temporary;
@@ -69,38 +69,37 @@ vector<vector<int> > rangeSearchRecursive
     int flag=1;
     for(int i=0; i<k; i++)
     {
-        if(parent->coordinates[i]<pointOne[i] || parent->coordinates[i]>pointTwo[i])
+        if(parent->coordinates[i]<point1[i] || parent->coordinates[i]>point2[i])
         {
 
             flag=0;
             break;
         }
     }
-    if(flag) temporary=insertPointToList(temporary, parent->coordinates);
+    if(flag) {
+    temporary=insertPointToList(temporary, parent->coordinates);
+
+    }
 
 
 
     int alignment=depth%k;
     vector<vector<int> > temporaryOne, temporaryTwo;
 
-    if(pointTwo[alignment]>parent->coordinates[alignment])
+    if(point2[alignment]>parent->coordinates[alignment])
         temporaryOne=rangeSearchRecursive
-                     (parent->right, pointOne, pointTwo, depth+1);
+                     (parent->right, point1, point2, depth+1);
 
-    if(pointOne[alignment]<parent->coordinates[alignment])
+    if(point1[alignment]<parent->coordinates[alignment])
         temporaryTwo=rangeSearchRecursive
-                     (parent->left, pointOne, pointTwo, depth+1);
+                     (parent->left, point1, point2, depth+1);
 
     temporary=insertVectorToList(temporary, temporaryOne);
     temporary=insertVectorToList(temporary, temporaryTwo);
     return temporary;
 }
 
-vector<vector<int> > rangeSearch(Node *root, int pointOne[], int pointTwo[])
-{
-    return rangeSearchRecursive
-           (root, pointOne, pointTwo, 0);
-}
+
 
 int main()
 {
@@ -111,18 +110,27 @@ int main()
     for (int i=0; i<numberOfNodes; i++) root=insertPoint(root, points[i]);
 
 
-    int pointOne[k];
-    pointOne[0]=1;
-    pointOne[1]=1;
-    int pointTwo[k];
-    pointTwo[0]=7;
-    pointTwo[1]=7;
-    vector<vector<int> > searchResult=rangeSearch(root, pointOne, pointTwo);
+    int point1[k], point2[k];
 
-    for(int i=0; i<searchResult.size(); i++)
+    //poimt 1
+    point1[0]=5;
+    point1[1]=10;
+
+    //poimt 2
+    point2[0]=2;
+    point2[1]=7;
+
+    int initialLevel=0;
+
+    vector<vector<int> > coveredAreaPoint=rangeSearch(root, point1, point2,initialLevel);
+
+    for(int i=0; i<coveredAreaPoint.size(); i++)
     {
-        for(int j=0; j<k; j++) cout << searchResult[i][j] << " ";
-        cout << "\n";
+        for(int j=0; j<k; j++) {
+        cout << coveredAreaPoint[i][j]<<" ";
+        }
+        cout<<endl;
+
     }
 
 }
