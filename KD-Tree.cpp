@@ -25,9 +25,9 @@ Node *recursiveInsert(Node *parent, int point[], int depth)
     if(parent==NULL)
         return initializeNewNode(point);
 
-    int alignment=depth%k;
+    int currentDepth=depth%k;
 
-    if(point[alignment]<parent->coordinates[alignment])
+    if(point[currentDepth]<parent->coordinates[currentDepth])
         parent->left=recursiveInsert(parent->left, point, depth+1);
 
     else
@@ -83,19 +83,19 @@ vector<vector<int> > rangeSearch
 
 
 
-    int alignment=depth%k;
-    vector<vector<int> > temporaryOne, temporaryTwo;
+    int currentDepth=depth%k;
+    vector<vector<int> > temp1, temp2;
 
-    if(point2[alignment]>parent->coordinates[alignment])
-        temporaryOne=rangeSearchRecursive
+    if(point2[currentDepth]>parent->coordinates[currentDepth])
+        temp1=rangeSearchRecursive
                      (parent->right, point1, point2, depth+1);
 
-    if(point1[alignment]<parent->coordinates[alignment])
-        temporaryTwo=rangeSearchRecursive
+    if(point1[currentDepth]<parent->coordinates[currentDepth])
+        temp2=rangeSearchRecursive
                      (parent->left, point1, point2, depth+1);
 
-    temporary=insertVectorToList(temporary, temporaryOne);
-    temporary=insertVectorToList(temporary, temporaryTwo);
+    temporary=insertVectorToList(temporary, temp1);
+    temporary=insertVectorToList(temporary, temp2);
     return temporary;
 }
 
