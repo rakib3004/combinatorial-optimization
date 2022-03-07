@@ -1,137 +1,120 @@
-#include<iostream>
-#include<stdlib.h>
-#include<string>
-#include<string.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-int k,depth=0;
-struct node {
-    int data[20];
-    node *right , *left ;
+const int k=2;
+
+struct Node{
+int coordinates[k];
+Node *left, *right;
 };
 
-node *root=NULL;
-
-void insertNonRoot(node *curr,node *newData, int depth)
+struct Node* initializeNewNode(int coordinateArray[])
 {
-    int d=depth%k;
-
-    if(curr->right==NULL && curr->data[d] <= newData->data[d]) curr->right= newData;
-    else if(curr->left==NULL && curr->data[d] > newData->data[d]) curr->left= newData;
-    else if(curr->data[d] <= newData->data[d]) insertNonRoot(curr->right,newData,depth+1);
-    else insertNonRoot(curr->left,newData,depth+1);
+	struct Node* temp=new Node;
+	for(int i=0;i<k;i++)
+	{
+		temp->coordinates[i]=coordinateArray[i];
+	}
+	temp->left=temp->right=NULL;
+	return temp;
 }
 
-void construct()
+Node *recursiveInsert(Node *parent, int point[], int depth)
 {
-     struct node *temp=new node;
+	if(parent==NULL)
+	return initializeNewNode(point);
 
-    cout << "enter"<< "[" << k << "]  " << "points:    ";
-     for(int i=0 ;i<k ; i++)
-     {
+	int alignment=depth%k;
 
-          cin >> temp->data[i];
-     }
-     temp->right=NULL;
-     temp->left=NULL;
+	if(point[alignment]<parent->coordinates[alignment])
+	parent->left=recursiveInsert(parent->left, point, depth+1);
 
+	else
+	parent->right=recursiveInsert(parent->right, point, depth+1);
 
-    if(root==NULL) root=temp;
-    else insertNonRoot(root,temp,0);
-
+	return parent;
 }
 
-void print(node *newNode)
+Node *insertPoint(Node *root, int point[])
 {
-    if(newNode==NULL) return;
-
-    print(newNode->left);
-
-    for(int i=0 ; i<k ; i++)
-    {
-        cout<<newNode->data[i]<<"     ";
-    }
-    cout << endl;
-
-    print(newNode->right);
+	recursiveInsert(root, point, 0);
 }
 
-bool sameNode(int *arr, int *brr)
+vector<vector<int> > insertPointToList(vector<vector<int> > pointList, int point[])
 {
-    for (int i = 0; i < k; ++i)
-    {
-            if (arr[i] != brr[i])
-            {
-                  return false;
-            }
-    }
-
-    return true;
+	vector<int> temporary;
+	for(int i=0;i<k;i++) temporary.push_back(point[i]);
+	pointList.push_back(temporary);
+	return pointList;
 }
 
-bool search_node(node* curr, int *point, int hight)
+vector<vector<int> > insertVectorToList
+(vector<vector<int> > pointList, vector<vector<int> > secondaryList)
 {
-    if (curr == NULL)
-        return false;
-    if (sameNode(curr->data, point))
-    {
-        depth=hight;
-         return true;
-    }
-
-
-    int di = hight % k;
-
-    if (point[di] < curr->data[di])
-        return search_node(curr->left, point, hight + 1);
-
-    return search_node(curr->right, point, hight + 1);
+	for(int i=0;i<secondaryList.size();i++)
+	{
+		pointList.push_back(secondaryList[i]);
+	}
+	return pointList;
 }
 
-void search_fun()
+vector<vector<int> > rangeSearchRecursive
+(Node *parent, int pointOne[], int pointTwo[], int depth)
 {
-    int s_point[k];
-    cout << "enter a node  :  ";
-    for(int i=0 ; i<k ; i++) cin >> s_point[i];
-    bool bl=search_node(root,s_point,0);
-    if(bl==true) cout <<"Found and hight :  " << depth+1 << endl;
-    else cout <<"Not found " << endl;
+	vector<vector<int> > temporary;
+	if(parent==NULL) return temporary;
+
+
+	int flag=1;
+	for(int i=0;i<k;i++)
+	{
+		if(parent->coordinates[i]<pointOne[i] || parent->coordinates[i]>pointTwo[i])
+		{
+		
+		flag=0; break; }
+	}
+	if(flag) temporary=insertPointToList(temporary, parent->coordinates);
+
+
+
+	int alignment=depth%k;
+	vector<vector<int> > temporaryOne, temporaryTwo;
+
+	if(pointTwo[alignment]>parent->coordinates[alignment])
+	temporaryOne=rangeSearchRecursive
+	(parent->right, pointOne, pointTwo, depth+1);
+
+	if(pointOne[alignment]<parent->coordinates[alignment])
+	temporaryTwo=rangeSearchRecursive
+	(parent->left, pointOne, pointTwo, depth+1);
+
+	temporary=insertVectorToList(temporary, temporaryOne);
+	temporary=insertVectorToList(temporary, temporaryTwo);
+	return temporary;
 }
 
-int main(void)
+vector<vector<int> > rangeSearch(Node *root, int pointOne[], int pointTwo[])
 {
-     cout << "Enter the value of K : " ;
-    cin >> k;
+	return rangeSearchRecursive
+	(root, pointOne, pointTwo, 0);
+}
 
-   // root =(node*)malloc( (sizeof( int)*(k+2) ));
+int main()
+{
+	 struct Node *root = NULL;
+	 int points[][k] = {{3, 6}, {17, 15}, {13, 15}, {6, 12},{9, 1}, {2, 7}, {10, 19}};
+	 int n=7;
+	 for (int i=0; i<n; i++) root=insertPoint(root, points[i]);
 
-   while(true)
-   {
-        int choice;
 
-        cout<<"1.Insert\n2.Search\n3.Print(in-order traversal)\n4.exit "<<endl;
-        cout<<"enter your choice : "<<endl;
-        cin>>choice;
+	 int pointOne[k]; pointOne[0]=1; pointOne[1]=1;
+	 int pointTwo[k]; pointTwo[0]=7; pointTwo[1]=7;
+	 vector<vector<int> > searchResult=rangeSearch(root, pointOne, pointTwo);
 
-        switch(choice)
-        {
+	 for(int i=0;i<searchResult.size();i++)
+	 {
+	 for(int j=0;j<k;j++) cout << searchResult[i][j] << " ";
+	 cout << "\n";
+	 }
 
-            case 1:
-                construct();
-                break;
-
-            case 2:
-                search_fun();
-                break;
-
-            case 3:
-                print(root);
-                break;
-
-        }
-
-        if(choice==4) break;
-
-   }
-    return 0;
 }
