@@ -87,12 +87,10 @@ vector<vector<int> > rangeSearch
     vector<vector<int> > temp1, temp2;
 
     if(point2[currentDepth]>parent->coordinates[currentDepth])
-        temp1=rangeSearchRecursive
-                     (parent->right, point1, point2, depth+1);
+        temp1=rangeSearch(parent->right, point1, point2, depth+1);
 
     if(point1[currentDepth]<parent->coordinates[currentDepth])
-        temp2=rangeSearchRecursive
-                     (parent->left, point1, point2, depth+1);
+        temp2=rangeSearch(parent->left, point1, point2, depth+1);
 
     temporary=insertVectorToList(temporary, temp1);
     temporary=insertVectorToList(temporary, temp2);
@@ -107,18 +105,22 @@ int main()
 
     int numberOfNodes=7;
     int points[numberOfNodes][k] = {{2,5},{3,2},{11,6},{3,8},{12,4},{7,2},{8,17},{6,9}};
-    for (int i=0; i<numberOfNodes; i++) root=insertPoint(root, points[i]);
+    for (int i=0; i<numberOfNodes; i++)
+    {
+                root=insertPoint(root, points[i]);
+
+    }
 
 
     int point1[k], point2[k];
 
     //poimt 1
-    point1[0]=5;
-    point1[1]=10;
+    point1[0]=0;
+    point1[1]=0;
 
     //poimt 2
     point2[0]=2;
-    point2[1]=7;
+    point2[1]=6;
 
     int initialLevel=0;
 
